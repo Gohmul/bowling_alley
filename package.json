@@ -1,0 +1,30 @@
+{
+  "name": "bowling_alley",
+  "version": "1.0.0",
+  "description": "Welcome to my made up bowling alley! I wanted to create a website that looks and feels as though you could actually go there, and could be later implemented into an actual website. I plan on featuring a few navigations that will be used to as home and an about that will let you navigate farther into the website.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gohmul/bowling_alley.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gohmul/bowling_alley/issues"
+  },
+  "homepage": "https://github.com/Gohmul/bowling_alley#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  }
+}
