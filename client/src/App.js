@@ -10,10 +10,10 @@ import Party from "./components/Party";
 import "./App.css";
 import { useState } from "react";
 import axios from "axios";
-
 const App = () => {
   const [shopSelect, setShopSelect] = useState([]);
   const [partySelect, setPartySelect] = useState([]);
+  const [partySelected, setPartySelected] = useState([]);
 
   const getShop = async () => {
     const res = await axios.get("http://localhost:3001/proshop");
@@ -23,6 +23,10 @@ const App = () => {
   const getParty = async () => {
     const res = await axios.get("http://localhost:3001/party");
     setPartySelect(res.data);
+  };
+  const getSelectedParty = async () => {
+    const res = await axios.get("http://localhost:3001/party/:id");
+    setPartySelected(res.data);
   };
 
   return (
@@ -42,6 +46,12 @@ const App = () => {
           <Route
             path="/Party"
             element={<Party getParty={getParty} partySelect={partySelect} />}
+          />
+          <Route
+            path="/partydetails/:id"
+            getSelectedparty={getSelectedParty}
+            partySelected={partySelected}
+            element={<Party />}
           />
         </Routes>
       </main>

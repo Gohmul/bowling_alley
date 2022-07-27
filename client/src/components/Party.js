@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Party = (props) => {
+  const [formBody, setFormBody] = useState({});
+  const [goodToGo, toggleGood] = useState(false);
   console.log(props);
   useEffect(() => {
     props.getParty();
   }, []);
+
   return (
     <div className="partyCard">
       {props.partySelect.partys?.map((party) => (
@@ -15,6 +19,7 @@ const Party = (props) => {
           <h3>Package:{party.package}</h3>
           <h3>Date:{party.date}</h3>
           <h3>Time:{party.time}</h3>
+          <button className="delete"> Delete </button>
         </div>
       ))}
     </div>
