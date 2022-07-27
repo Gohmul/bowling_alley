@@ -47,12 +47,6 @@ const App = () => {
             path="/Party"
             element={<Party getParty={getParty} partySelect={partySelect} />}
           />
-          <Route
-            path="/partydetails/:id"
-            getSelectedparty={getSelectedParty}
-            partySelected={partySelected}
-            element={<Party />}
-          />
         </Routes>
       </main>
     </div>
