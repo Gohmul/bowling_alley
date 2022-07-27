@@ -19,6 +19,7 @@ const Party = (props) => {
           <h3>Package:{party.package}</h3>
           <h3>Date:{party.date}</h3>
           <h3>Time:{party.time}</h3>
+          <button className="edit">Edit</button>
           <button className="delete"> Delete </button>
         </div>
       ))}

@@ -85,6 +85,26 @@ const deleteParty = async (req, res) => {
   }
 };
 
+const getSelectParty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const party = await Party.find({ _id: id });
+    return res.status(200).json({ party });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const getSelectShop = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const shop = await Shop.find({ _id: id });
+    return res.status(200).json({ shop });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   getAllPartys,
   getAllShops,
@@ -94,4 +114,6 @@ module.exports = {
   updateShop,
   deleteParty,
   deleteShop,
+  getSelectParty,
+  getSelectShop,
 };
