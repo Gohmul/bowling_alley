@@ -4,8 +4,8 @@ import axios from "axios";
 const Party = (props) => {
 const [showInput, setShowInput] = useState(false)
 const [inputValue, setInputValue] = useState({})
-const [change ,setChange] = useState("")
-const [submit, setSubmit] = useState("")
+// const [submit, setSubmit] = useState("")
+const initialState = {name:"", email:"", cname:"", package:"", date:"", time:""};
 
 useEffect(() => {
     props.getParty();
@@ -20,18 +20,18 @@ useEffect(() => {
     setShowInput(!showInput)
   }
 
-  const handleChange = (id) => {
-    axios.put(`http://localhost:3001/party/${id}`)
-    setChange(id.target.value)
-    props.getParty()
-  }
+  // const handleChange = (id) => {
+  //   setChange(id.target.value)
+  //   props.getParty()
+  // }
 
-  const handleSubmit = (id) => {
-    axios.post(`http://localhost:3001/party/${id}`)
-    setSubmit(id.target.value)
-    props.getParty()
+  // const handleSubmit = (e,id) => {
+  //   e.preventDefault()
+  //   axios.post(`http://localhost:3001/party/${id}`)
+  //   setSubmit(id.target.value)
+  //   props.getParty()
 
-  }
+  // }
   
   return (
     <div className="partyCard">
@@ -45,9 +45,17 @@ useEffect(() => {
          { showInput ? <input placeholder={party.date}/> : <h3>Date:{party.date}</h3> }
          { showInput ? <input placeholder={party.time}/> : <h3>Time:{party.time}</h3> }
          </form> 
-          { !showInput ? <button className="edit" onClick={handleEdit}>Edit</button> : <button className="save" type="submit" onChange={() =>handleChange} onClick={handleSubmit}>Save</button> }
+          { !showInput ?
+          <button className="edit" onClick={handleEdit}>Edit</button> 
+          :
+          (
+            <>
+          <button className="save" type="submit" onChange={() =>handleChange} >Save</button> 
           <button className="delete" onClick={() => handleDelete(party._id)}>Delete</button>
+          </>
+          )
           
+          }
         </div>
       ))}
     </div>
