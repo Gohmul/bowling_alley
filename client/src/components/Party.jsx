@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const Party = (props) => {
+let {id} = useParams()
 const [showInput, setShowInput] = useState(false)
 const [inputValue, setInputValue] = useState({})
 // const [submit, setSubmit] = useState("")
-const initialState = {name:"", email:"", cname:"", package:"", date:"", time:""};
+const initialState = {
+  name:"",
+  email:"",
+  cname:"",
+  package:"",
+  date:"",
+  time:""};
+const [formState, setFormState] = useState(initialState);
 
 useEffect(() => {
     props.getParty();
@@ -19,6 +28,17 @@ useEffect(() => {
   const handleEdit = () => {
     setShowInput(!showInput)
   }
+
+  const handleChange = event => {
+    setFormState({...formState, [event.target.id] : event.target.value});
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+    let res = await axios.put(`http://localhost:3001/party/${id}`)
+    setFormState(initialState)
+  }
+
 
   // const handleChange = (id) => {
   //   setChange(id.target.value)
@@ -45,12 +65,12 @@ useEffect(() => {
          { showInput ? <input placeholder={party.date}/> : <h3>Date:{party.date}</h3> }
          { showInput ? <input placeholder={party.time}/> : <h3>Time:{party.time}</h3> }
          </form> 
-          { !showInput ?
+         { !showInput ?
           <button className="edit" onClick={handleEdit}>Edit</button> 
           :
           (
             <>
-          <button className="save" type="submit" onChange={() =>handleChange} >Save</button> 
+          <button className="save" type="submit" onChange={handleChange} >Save</button> 
           <button className="delete" onClick={() => handleDelete(party._id)}>Delete</button>
           </>
           )
