@@ -5,7 +5,6 @@ import axios from "axios";
 const ProShop = (props) => {
 const [showInput, setShowInput] = useState(false)
 const [inputValue, setInputValue] = useState({})
-  console.log(props)
  useEffect(() => {
   props.getShop()
  }, []);
