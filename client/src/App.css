@@ -5,11 +5,25 @@ header {
     align-content: center;
     height:3em;
     font-size: 25px;
-  } 
+  }
+
+  .home:hover {
+    opacity: 0.8;
+    border:0.1em solid aqua;
+    border-radius:0.12em;
+    cursor: pointer;
+    background-color: rgb(0, 166, 166);
+  }
+  .about:hover {
+    opacity: 0.8;
+    border:0.1em solid aqua;
+    border-radius:0.12em;
+    cursor: pointer;
+  }
 
   .shop-Card:hover {
     opacity: 0.8;
-  border:0.1em solid #EECC00;
+  border:0.1em solid rgb(0, 166, 166);
   border-radius:0.12em;
   cursor: pointer;
   }
@@ -23,7 +37,7 @@ header {
 
   .party-Card:hover {
     opacity: 0.8;
-  border:0.1em solid #EECC00;
+  border:0.1em solid rgb(0, 166, 166);
   border-radius:0.12em;
   cursor: pointer;
   }
