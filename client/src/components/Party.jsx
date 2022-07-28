@@ -29,6 +29,7 @@ const [change ,setChange] = useState("")
   const handleSubmit = () => {
 
   }
+  
   return (
     <div className="partyCard">
       {props.partySelect.partys?.map((party) => (
